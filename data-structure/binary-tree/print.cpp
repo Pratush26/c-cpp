@@ -32,6 +32,17 @@ void postOrder(TreeNode* root){
         postOrder(root->right);
         cout << root->val << " ";
 }
+void levelOrder(TreeNode* root){
+        queue<TreeNode*> q;
+        q.push(root);
+        while (!q.empty()){
+            TreeNode* current = q.front();
+            cout << current->val << " ";
+            q.pop();
+            if(current->left) q.push(current->left);
+            if(current->right) q.push(current->right);
+        }
+}
 
 int main(){
     TreeNode *root = new TreeNode(1);
@@ -53,7 +64,10 @@ int main(){
 
     inOrder(root);
     cout << "\n";
-
+    
     postOrder(root);
+    cout << "\n";
+
+    levelOrder(root);
     return 0;
 }
