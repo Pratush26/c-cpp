@@ -19,12 +19,12 @@ int CountNode(TreeNode* root){
     int r = CountNode(root->right);
     return l+r+1;
 }
-int CountLeafNode(TreeNode* root){
+int height(TreeNode* root){
     if(!root) return 0;
-    if(!root->left && !root->right) return 1;
-    int l = CountLeafNode(root->left);
-    int r = CountLeafNode(root->right);
-    return l+r;
+    if(!root->left && !root->right) return 0;
+    int l = height(root->left);
+    int r = height(root->right);
+    return max(l,r)+1;
 }
 
 int main(){
@@ -44,7 +44,7 @@ int main(){
 
     int s = CountNode(root);
     cout << "Tree size: " << s << "\n";
-    int ls = CountLeafNode(root);
-    cout << "Leaf Node size: " << ls << "\n";
+    int ls = height(root);
+    cout << "Tree height: " << ls << "\n";
     return 0;
 }

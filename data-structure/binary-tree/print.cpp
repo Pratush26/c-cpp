@@ -34,7 +34,7 @@ void postOrder(TreeNode* root){
 }
 void levelOrder(TreeNode* root){
         queue<TreeNode*> q;
-        q.push(root);
+        if(root) q.push(root);
         while (!q.empty()){
             TreeNode* current = q.front();
             cout << current->val << " ";
