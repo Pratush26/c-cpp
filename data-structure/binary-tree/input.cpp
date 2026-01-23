@@ -28,8 +28,9 @@ TreeNode* input(){
     queue<TreeNode*> q;
     int l, r, val;
     cin >> val;
-    TreeNode *root = new TreeNode(val);
-    q.push(root);
+    TreeNode *root = nullptr;
+    if(val != -1) root = new TreeNode(val);
+    if(root) q.push(root);
     while (!q.empty()){
         TreeNode *leftNode = nullptr, *rightNode = nullptr, *current = q.front();
         cin >> l >> r;
