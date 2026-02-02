@@ -29,8 +29,10 @@ TreeNode* input(){
     int l, r, val;
     cin >> val;
     TreeNode *root = nullptr;
-    if(val != -1) root = new TreeNode(val);
-    if(root) q.push(root);
+    if(val != -1){
+        root = new TreeNode(val);
+        q.push(root);
+    }
     while (!q.empty()){
         TreeNode *leftNode = nullptr, *rightNode = nullptr, *current = q.front();
         cin >> l >> r;
