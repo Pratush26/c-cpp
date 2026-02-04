@@ -38,6 +38,15 @@ Node* input(){
     return root;
 }
 
+Node* insert(Node* root, int val) {
+    if (!root){
+         return new Node(val);
+    }
+    if (val < root->val) root->left = insert(root->left, val);
+    else root->right = insert(root->right, val);
+    return root;
+}
+
 bool search(Node *root, int x){
     if (root == NULL) return false;
     if (root->val == x) return true;
@@ -52,5 +61,6 @@ int main() {
 
     cin >> val;
     cout << (search(root, val) ? "Found\n" : "Not found!\n");
+    root = insert(root, 34);
     return 0;
 }
