@@ -27,7 +27,7 @@ void levelOrder(Node* root){
         }
 }
 
-Node* ArrToBst(vector<int> arr, int s, int e){
+Node* ArrToBst(vector<int>& arr, int s, int e){
     if(s>e) return NULL;
     int mid = (s+e)/2;
     Node* root = new Node(arr[mid]);
