@@ -52,8 +52,8 @@ void delete_heap(vector<int> &v) {
             while (cur_idx != 0)
             {
                 int parent_idx = (cur_idx - 1) / 2;
-                if (arr[parent_idx] < arr[cur_idx])
-                    swap(arr[parent_idx], arr[cur_idx]); //  Max Heap
+                if (arr[parent_idx] < arr[cur_idx]) //  Max Heap
+                    swap(arr[parent_idx], arr[cur_idx]);
                 // if (arr[parent_idx] > arr[cur_idx]) swap(arr[parent_idx], arr[cur_idx]);    //  Min Heap
                 else
                     break;
