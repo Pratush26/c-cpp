@@ -3,7 +3,7 @@ using namespace std;
 
 int main() {
     map<string, int> mp;
-    mp["sakib"] = 25;
+    mp["sakib"] = 25;   //  logN
     mp.insert({"sajid", 35});
     mp["rakib"] = 43;
     
