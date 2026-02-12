@@ -2,7 +2,7 @@
 using namespace std;
 
     // There is 3 types of input stretagy for graph input
-    
+
 int main() {
 
     // Adjacent Array
@@ -49,3 +49,11 @@ int main() {
     for (auto i : li) cout << i.first << " -> " << i.second << "\n";
     return 0;
 }
+
+//  sample input
+// 5 5
+// 0 1
+// 0 2
+// 3 0
+// 1 3
+// 3 4
