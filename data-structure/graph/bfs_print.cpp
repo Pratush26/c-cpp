@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void bfs(int src, vector<int> arr[], vector<bool> &visited){
+void bfs(int src, vector<vector<int>> &arr, vector<bool> &visited){
     queue<int> qu;
     qu.push(src);
     visited[src] = true;
@@ -20,14 +20,14 @@ void bfs(int src, vector<int> arr[], vector<bool> &visited){
 int main() {
     int n, e, r, c, check;
     cin >> n >> e;
-    vector<int> arr[n];
+    vector<vector<int>> arr(n);
     vector<bool> visited(n, false);
     while (e--) {
         cin >> r >> c;
         arr[r].push_back(c);
         arr[c].push_back(r);
     }
-    bfs(0, arr, visited);
+    bfs(0, arr, visited);   //  Breath First Search
 
     //  check connected or not
     cin >> check;

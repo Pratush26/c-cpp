@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void dfs(int src, vector<int> arr[], vector<bool> &visited) {
+void dfs(int src, vector<vector<int>> &arr, vector<bool> &visited) {
     cout << src << " ";
     visited[src] = true;
     for(int i: arr[src]) if (!visited[i]) dfs(i, arr, visited);
@@ -10,14 +10,14 @@ void dfs(int src, vector<int> arr[], vector<bool> &visited) {
 int main() {
     int n, e, r, c, check;
     cin >> n >> e;
-    vector<int> arr[n];
+    vector<vector<int>> arr(n);
     vector<bool> visited(n, false);
     while (e--) {
         cin >> r >> c;
         arr[r].push_back(c);
         arr[c].push_back(r);
     }
-    dfs(0, arr, visited);
+    dfs(0, arr, visited);   //  Depth First Search
 
     return 0;
 }
