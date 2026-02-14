@@ -8,7 +8,7 @@ void dfs(int src, vector<vector<int>> &arr, vector<bool> &visited) {
 }
 
 int main() {
-    int n, e, r, c;
+    int n, e, r, c, comp = 0;
     cin >> n >> e;
     vector<vector<int>> arr(n);
     vector<bool> visited(n, false);
@@ -17,15 +17,22 @@ int main() {
         arr[r].push_back(c);
         arr[c].push_back(r);
     }
-    dfs(0, arr, visited);   //  Depth First Search
-
+    for (int i = 0; i < n; i++) {
+        if(!visited[i]) {
+            dfs(i, arr, visited);
+            comp++;
+            cout << "\n";
+        }
+    }
+    cout << "Total Component Found : " << comp;
     return 0;
 }
 
 //  sample input
-// 7 5
-// 0 1
+// 8 6
+// 1 2
+// 0 5
+// 2 3
+// 6 7
+// 4 5
 // 1 3
-// 3 2
-// 4 6
-// 3 5

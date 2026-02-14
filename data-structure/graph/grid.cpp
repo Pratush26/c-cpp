@@ -18,7 +18,7 @@ void dfs(int x, int y, vector<vector<bool>> &visited) {
     }
 }
 
-void bfs(int x, int y) {
+void bfs(int x, int y, vector<vector<char>> &grid) {
     queue<pair<int, int>> q;
     q.push({x, y});
     vector<vector<bool>> visited(r, vector<bool>(c, false));
@@ -32,7 +32,7 @@ void bfs(int x, int y) {
         for (int i = 0; i < 4; i++) {
             int ni = x + way[i].first;
             int nj = y + way[i].second;
-            if(valid(ni, nj) && !visited[ni][nj]) {
+            if(valid(ni, nj) && !visited[ni][nj] && grid[ni][nj] != '#') {
                 q.push({ni, nj});
                 visited[ni][nj] = true;
             }
@@ -43,7 +43,7 @@ void bfs(int x, int y) {
 int main() {
     int x, y;
     cin >> r >> c;
-    char grid[r][c];
+    vector<vector<char>> grid(r, vector<char>(c));
     vector<vector<bool>> visited(r, vector<bool>(c, false));
     for (int i = 0; i < r; i++) for (int j = 0; j < c; j++) cin >> grid[i][j];
     cin >> x >> y;
@@ -53,7 +53,7 @@ int main() {
     dfs(x, y, visited);
     //  dfs output
     cout << "dfs output\n";
-    bfs(x, y);
+    bfs(x, y, grid);
     return 0;
 }
 
