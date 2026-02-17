@@ -2,20 +2,19 @@
 using namespace std;
 
 int r, c;
-vector<pair<int, int>> way = {{0, 1}, {0, -1}, {-1, 0}, {1, 0}};
 
 bool valid(int i, int j){
     if(i < 0 || j < 0 || i >= r || j >= c) return false;
     return true;
 }
 int dfs(int x, int y, vector<vector<bool>> &visited, vector<vector<char>> &grid) {
+    if(!valid(x, y) || visited[x][y] || grid[x][y] == '#') return 0;
     visited[x][y] = true;
     int size = 1;
-    for (int i = 0; i < 4; i++) {
-        int ni = x + way[i].first;
-        int nj = y + way[i].second;
-        if(valid(ni, nj) && !visited[ni][nj] && grid[ni][nj] != '#') size += dfs(ni, nj, visited, grid);
-    }
+    size += dfs(x, y+1, visited, grid);
+    size += dfs(x, y-1, visited, grid);
+    size += dfs(x-1, y, visited, grid);
+    size += dfs(x+1, y, visited, grid);
     return size;
 }
 
