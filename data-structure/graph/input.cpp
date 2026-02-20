@@ -36,7 +36,7 @@ int main() {
         for (int val : arr[i]) {
             cout << val << " ";
         }
-        cout << i << "\n";
+        cout << "\n";
     }
 
     //  Edge List
