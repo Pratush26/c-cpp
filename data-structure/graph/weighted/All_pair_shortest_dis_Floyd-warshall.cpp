@@ -1,38 +1,49 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int main() {
-    int n, e, r, c, val;
-    cin >> n >> e;
-    int matrx[n][n];
-    for (int i = 0; i < n; i++) for (int j = 0; j < n; j++) matrx[i][j] = i==j ? 0 : INT_MAX;
-    while (e--) {
-        cin >> r >> c >> val;
-        matrx[r][c] = val;
+int main(){
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    int n, m, q;
+    cin >> n >> m >> q;
+
+    const long long INF = 1e18;
+    vector<vector<long long>> dist(n, vector<long long>(n, INF));
+
+    for (int i = 0; i < n; i++) dist[i][i] = 0;
+
+    while (m--){
+        int a, b;
+        long long c;
+        cin >> a >> b >> c;
+        a--;
+        b--;
+        dist[a][b] = min(dist[a][b], c);
+        dist[b][a] = min(dist[b][a], c);
     }
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++) {
-            for (int k = 0; k < n; k++) {
-                if(matrx[j][i] != INT_MAX && matrx[i][k] != INT_MAX && matrx[j][i] + matrx[i][k] < matrx[j][k]){
-                    matrx[j][k] = matrx[j][i] + matrx[i][k];
-                }
-            }
-            
-        }
-    }
+
+    for (int k = 0; k < n; k++)
+        for (int i = 0; i < n; i++)
+            for (int j = 0; j < n; j++)
+                if (dist[i][k] + dist[k][j] < dist[i][j])
+                    dist[i][j] = dist[i][k] + dist[k][j];
+
     bool cycle = false;
-    for (int i = 0; i < n; i++) if(matrx[i][i]<0) cycle = true;
-    if(cycle){
+    for (int i = 0; i < n; i++) if (dist[i][i] < 0) cycle = true;
+    if (cycle){
         cout << "Negative weighted cycle detected";
         return 0;
     }
-    for (int i = 0; i < n; i++){
-        for (int j = 0; j < n; j++){
-            if(matrx[i][j] == INT_MAX) cout << "i ";
-            else cout << matrx[i][j] << " ";
-        }
-        cout << "\n";
+
+    while (q--){
+        int a, b;
+        cin >> a >> b;
+        a--;
+        b--;
+        cout << (dist[a][b] == INF ? -1 : dist[a][b]) << '\n';
     }
+
     return 0;
 }
 // Sample input
