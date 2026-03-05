@@ -20,7 +20,7 @@ int main(){
         a--;
         b--;
         dist[a][b] = min(dist[a][b], c);
-        dist[b][a] = min(dist[b][a], c);
+        dist[b][a] = min(dist[b][a], c);    //  for undirected graph
     }
 
     for (int k = 0; k < n; k++)
