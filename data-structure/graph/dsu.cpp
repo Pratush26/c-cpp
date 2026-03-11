@@ -28,7 +28,7 @@ int main() {
     int n, e, a, b;
     bool cycle = false;
     memset(par, -1, sizeof(par));
-    memset(group_size, 1, sizeof(group_size));
+    fill(group_size, group_size + 1005, 1);
     cin >> n >> e;
     while (e--){
         cin >> a >> b;
